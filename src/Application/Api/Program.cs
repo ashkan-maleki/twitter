@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddControllers();
 builder.Services.AddDbContext<TwitterContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("SchoolContext")));
+                options.UseSqlServer(builder.Configuration.GetConnectionString("TwitterContext")));
 builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
