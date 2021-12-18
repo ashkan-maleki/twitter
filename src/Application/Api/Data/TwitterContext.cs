@@ -9,7 +9,7 @@ namespace Api.Data
         {
         }
 
-        public DbSet<Tweet> Tweets { get; set; }
+        public DbSet<Tweet>? Tweets { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
