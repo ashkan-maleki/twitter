@@ -24,9 +24,13 @@ namespace Api.Controllers
 
         // GET: api/Tweets
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Tweet>>> GetTweets()
+        public async Task<ActionResult<IEnumerable<Tweet>>> GetTweets([FromQuery] Pagination pagination)
         {
-            return await _context.Tweets.ToListAsync();
+            return await _context.Tweets
+                .OrderByDescending(t => t.TweetId)
+                .Skip((pagination.PageIndex) * pagination.PageSize)
+                .Take(pagination.PageSize)
+                .ToListAsync();
         }
 
         // GET: api/Tweets/5

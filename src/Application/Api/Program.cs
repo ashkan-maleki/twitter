@@ -40,7 +40,7 @@ using (var scope = app.Services.CreateScope())
 }
 
 app.MapGet("/message", () => "Hello World!");
-
+app.MapControllers();
 
 
 
