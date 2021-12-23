@@ -35,6 +35,7 @@ using (var scope = app.Services.CreateScope())
     var services = scope.ServiceProvider;
 
     var context = services.GetRequiredService<TwitterContext>();
+    context.Database.EnsureDeleted();
     context.Database.EnsureCreated();
     DbInitializer.Initialize(context);
 }

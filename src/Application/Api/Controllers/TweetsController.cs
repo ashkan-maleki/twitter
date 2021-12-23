@@ -27,9 +27,11 @@ namespace Api.Controllers
         public async Task<ActionResult<IEnumerable<Tweet>>> GetTweets([FromQuery] Pagination pagination)
         {
             return await _context.Tweets
+                .Where(tweet => tweet.User.UserName == "user1")
                 .OrderByDescending(t => t.TweetId)
                 .Skip((pagination.PageIndex) * pagination.PageSize)
                 .Take(pagination.PageSize)
+                .Include(tweet => tweet.User)
                 .ToListAsync();
         }
 
